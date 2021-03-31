@@ -41,3 +41,30 @@ def get_segments_merge_last(text, n, chunks, wordFilter=None, process=False):
     if wordFilter:
         segments = [wordFilter(s) for s in segments]
     return segments
+def get_sliding_words(text, n=None, chunks=None, wordFilter=None, process=False):
+    segments = []
+    words = word_tokenize(text)
+    if process:
+        words = preprocessor.process_word_list(words)
+
+    mult = 3
+    if n:
+        n = min(n, len(words))
+        chunks = round(len(words) / n)
+    
+    parts = chunks * mult
+    part_size = round(len(words) / parts)
+    i = 0
+    for i in range(0, parts - mult):
+        segments.append(' '.join(words[i*part_size:i*part_size+mult*part_size]))
+    segments.append(' '.join(words[i*part_size:]))
+    
+    if wordFilter:
+        segments = [wordFilter(s) for s in segments]
+    
+    return segments
+
+def word_chunks(X, n=None, chunks=None, wordFilter=None, sliding=False, process=False):
+    chunker = get_sliding_words if sliding else get_segments
+    
+    return np.array([chunker(text, n, chunks, wordFilter, process) for text in X])
