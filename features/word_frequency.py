@@ -19,6 +19,7 @@ class WordFrequency():
 
         for i, doc in enumerate(X):
             segments = []
+
             for entry in doc:
                 class_sum = 0
                 word_count = 0
