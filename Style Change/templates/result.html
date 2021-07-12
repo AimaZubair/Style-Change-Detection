@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>change Detection</title>
+        <style>
+            body{
+              background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)), url();
+            }
+            .result{
+              background-color: rgb(0,0,0); /* Fallback color */
+              background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+              color: rgb(0,0,0);
+              font-weight: bold;
+              border: 3px solid rgb(0,0,0);
+              position: absolute;
+              top: 10%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 80%;
+              height: 20px;
+              padding: 20px;
+              text-align: center;
+            }
+            h1{
+              margin-top: 0px;
+            }
+            h2{
+              text-align: center;
+            }
+            .container {
+              display: flex;
+              height: 650px;
+              margin-top: 10%;
+              justify-content:center;
+            }
+
+            .item1 {
+              background: rgba(144, 143, 143, 0.4);
+              height: 550px;
+              width: 550px;
+            }
+
+            .item2 {
+              background: rgba(144, 143, 143, 0.4);
+              height: 550px;
+              width: 650px;
+            }
+          </style>
+    </head>
+    <body>
+            <div class ="result">
+              <h1>Result</h1>
+            </div>
+            <form class="result-form">
+                <div class="container">
+                    <div class="item1" id = "prediction_text">
+                      <br><br>
+                      <h2>Prediction</h2>
+                      <h3>{{ prediction_text }}</h3>
+                    </div>
+                    <div class="item2" id="file_text">
+                      <br><br>
+                        <h2>File Text</h2>
+                        <h3><p> {{ file_text }} </p></h3>
+                    </div>
+                  </div>
+            </form>
+    </body>
+</html>
